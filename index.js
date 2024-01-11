@@ -13,6 +13,7 @@ const inputFieldEl = document.getElementById("input-field-el")
 const btnEl = document.getElementById("btn-el")
 const endorsementListEl = document.getElementById("endorsement-list-el")
 
+
 btnEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value 
     push(endorsementListInDB, inputValue) 
@@ -48,10 +49,15 @@ function clearEndorsementList() {
 function appendItemToEndorsementList(endorsement) {
     let endorsementID = endorsement[0]
     let endorsementValue = endorsement[1]
-    
+
     let newEl = document.createElement("li")
     
     newEl.textContent = endorsementValue
     
     endorsementListEl.append(newEl)
 }
+
+inputFieldEl.addEventListener("click", function() {
+    clearInputField()
+})
+
