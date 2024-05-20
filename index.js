@@ -13,24 +13,25 @@ const inputFieldEl = document.getElementById("input-field-el")
 const btnEl = document.getElementById("btn-el")
 const endorsementListEl = document.getElementById("endorsement-list-el")
 
+console.log(inputFieldEl)
 
 btnEl.addEventListener("click", function() {
-    let inputValue = inputFieldEl.value 
-    push(endorsementListInDB, inputValue) 
+    let inputValue = inputFieldEl.value
+    push(endorsementListInDB, inputValue)
     clearInputField()
 })
 
 onValue(endorsementListInDB, function(snapshot) {
     if (snapshot.exists()) {
         let endorsementsList = Object.entries(snapshot.val())
-        
+
         clearEndorsementList()
-        
+
         for(let i = 0; i < endorsementsList.length; i++) {
             let currentEndorsement = endorsementsList[i]
             let currentEndorsementID = currentEndorsement[0]
             let currentEndorsementValue = currentEndorsement[1]
-            
+
             appendItemToEndorsementList(currentEndorsement)
         }
     } else {
@@ -51,13 +52,12 @@ function appendItemToEndorsementList(endorsement) {
     let endorsementValue = endorsement[1]
 
     let newEl = document.createElement("li")
-    
+
     newEl.textContent = endorsementValue
-    
+
     endorsementListEl.append(newEl)
 }
 
 inputFieldEl.addEventListener("click", function() {
     clearInputField()
 })
-
